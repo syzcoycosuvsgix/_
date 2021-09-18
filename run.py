@@ -6,8 +6,8 @@ async def setup(num):
 
 async def play():
     runner = [
-    setup(_) for _ in range(1, 501)
+    await setup(_) for _ in range(1, 501)
     ]
-    asyncio.wait(runner)
+    asyncio.wait()
 
 asyncio.run(play())
