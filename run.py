@@ -5,9 +5,6 @@ async def setup(num):
         print(f"Log as {num} | {time.perf_counter()}")
 
 async def play():
-    runner = [
-    await setup(_) for _ in range(1, 501)
-    ]
-    asyncio.wait()
+    asyncio.wait(setup(_) for _ in range(1, 501))
 
 asyncio.run(play())
