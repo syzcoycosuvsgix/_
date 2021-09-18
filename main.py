@@ -1,10 +1,12 @@
 import random, asyncio
 
+num = int(input("Введите количество потоков: "))
+asyncio.run(play(num))
+
 async def setup(count):
-    result = random.randint(5, 16) * 0.01
+    result = random.randint(5, 20) * 0.01
     await asyncio.sleep(result)
     print("Log as {}".format(count))
 
-async def play():
-    await asyncio.wait([setup(_) for _ in range(1, 101)])
-asyncio.run(play())
+async def play(num):
+    await asyncio.wait([setup(_) for _ in range(1, num+1)])
