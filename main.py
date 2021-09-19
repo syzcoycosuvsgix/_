@@ -1,5 +1,5 @@
-import multi, configparser, json, db
-from multiprocessing import Process as Thread
+import multi, configparser, json, db, asyncio
+from threading import Thread
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -12,12 +12,12 @@ api_hash = config["pyrogram"]["api_hash"]
 print("total accounts> %d \n" % len(tokens))
 
 for token in tokens:
-    Thread(multi.Client(
+    Thread(target=multi.Client, args=(
     session_name=token,
     api_id=api_id,
     api_hash=api_hash,
     bot_token=token,
-    messages=text)).start()
+    messages=text,)).start()
     print(f"Log as {token[:5]}")
 print("send <a> to chat")
 pyrogram.idle()
