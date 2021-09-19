@@ -6,6 +6,11 @@ def Client(session_name, api_id, api_hash, bot_token, messages):
     async def o(client, message):
         if message.text != "a":
             return
+        me = await bot.get_me()
         while True:
-            await client.send_message(message.chat.id, random.choice(messages))
+            try:
+                await client.send_message(message.chat.id, random.choice(messages))
+                print(f"[{me.username}] sended.")
+            except:
+                print(f"[{me.username}] not sended.")
     bot.run()
