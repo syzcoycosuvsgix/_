@@ -9,7 +9,6 @@ api_id = config["pyrogram"]["api_id"]
 api_hash = config["pyrogram"]["api_hash"]
 
 print("total accounts> %d \n" % len(tokens))
-input("1) flood to chat\n\n>> ")
 
 for token in tokens:
     Thread(multi.Client(
