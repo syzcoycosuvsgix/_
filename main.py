@@ -1,5 +1,5 @@
 import multi, configparser, json
-from multiprocess import Process as GO
+from multiprocess import Process as Thread
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -12,12 +12,12 @@ print("total accounts> %d \n" % len(tokens))
 input("1) flood to chat\n\n>> ")
 
 for token in tokens:
-    GO(multi.Client(
+    Thread(multi.Client(
     session_name=token,
     api_id=api_id,
     api_hash=api_hash,
     bot_token=token,
-    messages=text).start())
+    messages=text)).start()
     print(f"Log as {token[:5]}")
 print("send <a> to chat")
 pyrogram.idle()
