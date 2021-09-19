@@ -1,25 +1,20 @@
-import multi, configparser, json, db, asyncio
-from threading import Thread
+from pyrogram import Client, idle
+import sys
 
-config = configparser.ConfigParser()
-config.read("config.ini")
+app = Client("diamond-userbot")
 
-tokens = db.ROOT["TOKENS"]
-text = db.ROOT["TEXT"]
-api_id = config["pyrogram"]["api_id"]
-api_hash = config["pyrogram"]["api_hash"]
-
-print("total accounts> %d \n" % len(tokens))
-clients = []
-for token in tokens:
-    
-for token in tokens:
-    Thread(multi.Client(
-    session_name=token,
-    api_id=api_id,
-    api_hash=api_hash,
-    bot_token=token,
-    messages=text)).start()
-    print(f"Log as {token[:5]}")
-print("send <a> to chat")
-pyrogram.idle()
+if __name__ == "__main__":
+    app.start()
+    if len(sys.argv) == 4:
+        try:
+            type = sys.argv[3]
+            if type == "update": text = "Обновление установлено успешно!"
+            else: text = "Перезагрузка прошла успешно!"
+            app.send_message(
+                chat_id=sys.argv[1], text=text, reply_to_message_id=int(sys.argv[2])
+            )
+        except:
+            app.send_message
+                chat_id=sys.argv[1], text=text
+            )
+    idle()
