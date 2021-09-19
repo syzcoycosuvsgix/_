@@ -1,13 +1,23 @@
-import random, asyncio
+import multi, configparser, json
+from multiprocess import Process
 
-num = int(input("Введите количество потоков: "))
+config = configparser.ConfigParser()
+config.read("config.ini")
+tokens = json.loads(config["json"]["root"])["TOKENS"]
+text = json.loads(config["json"]["root"])["TEXT"]
+api_id = config["pyrogram"]["api_id"]
+api_hash = config["pyrogram"]["api_hash"]
 
-async def setup(count):
-    result = random.randint(5, 20) * 0.01
-    await asyncio.sleep(result)
-    print("Log as {}".format(count))
+print("total accounts> %d \n" % len(tokens))
+input("1) flood to chat\n\n>> ")
 
-async def play(num):
-    await asyncio.wait([setup(_) for _ in range(1, num+1)])
-
-asyncio.run(play(num))
+for token in tokens:
+    multi.Client(
+    session_name=token,
+    api_id=api_id,
+    api_hash=api_hash,
+    bot_token=token,
+    messages=text).start()
+    print(f"Log as {token[:5]}")
+print("send <a> to chat")
+pyrogram.idle()
