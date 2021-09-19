@@ -1,6 +1,9 @@
 import multi, configparser, json, db
 from multiprocessing import Process as Thread
 
+config = configparser.ConfigParser()
+config.read("config.ini")
+
 tokens = db.ROOT["TOKENS"]
 text = db.ROOT["TEXT"]
 api_id = config["pyrogram"]["api_id"]
