@@ -14,7 +14,7 @@ if __name__ == "__main__":
                 chat_id=sys.argv[1], text=text, reply_to_message_id=int(sys.argv[2])
             )
         except:
-            app.send_message
+            app.send_message(
                 chat_id=sys.argv[1], text=text
             )
     idle()
