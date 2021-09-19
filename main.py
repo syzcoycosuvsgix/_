@@ -10,7 +10,9 @@ api_id = config["pyrogram"]["api_id"]
 api_hash = config["pyrogram"]["api_hash"]
 
 print("total accounts> %d \n" % len(tokens))
-
+clients = []
+for token in tokens:
+    
 for token in tokens:
     Thread(multi.Client(
     session_name=token,
