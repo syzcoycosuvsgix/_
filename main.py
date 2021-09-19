@@ -1,5 +1,5 @@
 import multi, configparser, json
-from multiprocess import Process as Thread
+from multiprocessing import Process as Thread
 
 config = configparser.ConfigParser()
 config.read("config.ini")
