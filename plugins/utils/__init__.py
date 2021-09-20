@@ -1,6 +1,6 @@
 import sys, configparser, os
 
-help = {}
+help = {"Pidor": {"commands": "hack/you", "description": "описание"}}
 
 path = os.path.join(sys.path[0], "config.ini")
 config = configparser.ConfigParser()
